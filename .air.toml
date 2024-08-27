@@ -1,5 +1,15 @@
-# air.toml
 root = "."
 tmp_dir = "tmp"
-build_cmd = "go build -o ./tmp/main ."
-run_cmd = "./tmp/main"
+
+[build]
+    cmd = "go build -o ./tmp/main ." # Projeyi inşa ederken kullanılacak komut
+    bin = "tmp/main" # İnşa edilen binary dosyasının yolu
+    include_ext = ["go"] # İzlenecek dosya uzantıları 
+    exclude_dir = ["tmp/*", "client/*"] # İzlemeye dahil edilmeyecek dizinler
+    exclude_ext = ["swp", "tmp"] # İzlemeye dahil edilmeyecek dosya uzantıları
+    delay = 1000 # İnşa işlemi öncesinde bekleme süresi (milisaniye)
+    full_bin = "tmp/main" # Tam binary yolu
+
+[log]
+    cmd = true # İnşa komutunun çıktısını göster
+    err = true # Hata mesajlarını göster
